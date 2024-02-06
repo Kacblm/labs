@@ -5,5 +5,14 @@
   become: yes
 
   tasks:
+
   - name: Task ping
     ping: 
+
+  - name: Update cache
+    apt:
+      update_cache: yes
+  
+  - name: Upgrade system
+    apt:
+      upgrade: yes
