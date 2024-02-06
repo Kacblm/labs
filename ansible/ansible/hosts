@@ -5,6 +5,5 @@ vm-02 ansible_host=192.168.1.111
 vm-03 ansible_host=192.168.1.112
 ####  vm-04 ansible_host=192.168.1.113
 
-
 [balancers]
 vm-01 ansible_host=192.168.1.110
