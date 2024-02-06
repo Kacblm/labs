@@ -6,6 +6,6 @@
   strategy: free
 
   roles:
-    - { role: init/debian, when: ansible_os_family == 'Debian' }
+    - { role: /Users/hafizov/lab/ansible/roles/init/debian, when: ansible_os_family == 'Debian' }
 #    - { role: INIT/RHEL, when: ansible_os_family == 'RedHat' }
 #    - { role: INIT/Gentoo, when: ansible_os_family == 'Gentoo' }
