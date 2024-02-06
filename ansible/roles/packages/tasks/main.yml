@@ -43,5 +43,7 @@
       - net-tools
       - ca-certificates
       - gpg-agent
+      - nmon
+      - lm-sensors
   notify:
     - update locales
