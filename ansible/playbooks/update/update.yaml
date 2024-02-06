@@ -1,0 +1,15 @@
+---
+
+- name: Update and Upgrade Servers
+  hosts: all
+  become: yes
+
+  tasks: 
+
+  - name: Update cache
+    apt:
+      update_cache: yes
+  
+  - name: Upgrade system
+    apt:
+      upgrade: yes
