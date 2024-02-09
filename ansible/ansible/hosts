@@ -1,5 +1,5 @@
 [test_group]
-vm-00 ansible_host=192.168.1.100 #ansible_user=kac ansible_password=1
+vm-00 ansible_host=192.168.1.100
 vm-01 ansible_host=192.168.1.110
 vm-02 ansible_host=192.168.1.111 
 vm-03 ansible_host=192.168.1.112
