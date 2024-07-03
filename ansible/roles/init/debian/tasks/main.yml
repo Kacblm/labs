@@ -1,31 +1,31 @@
 ---
 
-- name: Setup root password
-  user:
-    name: root
-    state: present
-    password: "!"
-
-#- name: Add ansible user group
-#  group:
-#    name: ansible
-#    state: present
-
-#- name: Add ansible user
+#- name: Setup root password
 #  user:
-#    name: ansible
+#    name: root
 #    state: present
-#    comment: "Ansible user"
-#    group: ansible
-#    password: !
-#    shell: /bin/bash
+#    password: "!"
+
+- name: Add hafizov user group
+  group:
+    name: hafizov
+    state: present
+
+- name: Add hafizov user
+  user:
+    name: hafizov
+    state: present
+    comment: "hafizov"
+    group: hafizov
+    password: !
+    shell: /bin/bash
 
 - name: Add ansible key
   ansible.posix.authorized_key:
-    user: kac
+    user: hafizov
     state: present
 #    exclusive: no
-    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCz7K/Uh6SetBfAxKY643+cQTxjM3T81jBH2VC+fF1IgxWp5FSrhVaQhcJKmJoU7qgniIJczbflhpKUz5qrJJfdAzFR+r9AE47BLL03D24gh7K5RD5q8ER0dW384aJTTAbqVpOpq2/pKsRKRUUJceY1vzy6KBFzUlmK8bXlu4pvdneFLyb6RM9HRYibDhZTwxxdgQEQOQxsEu961v+Y70u5zXqWztk5r3bb5WZ32SoJh9ewYLf0fUJqNeX5P8XyFXmUqCPiPzhekRY2We57GgASE/O9KbvTIudAQh+iTpZtHWL9qO2u+M0p4dQqEZ7xjDkCJJtBqwLVvDkkRMJ/pJzcx1fH21O9+F8sBHNNZn1EOyBO0APDwbvRGG4VUHmUIGYexmZeylWnncZHREzo6F0DQ27pPJUfjh2EZwHPMfIGqY5G1e/VziQGe60Rm/tztlovfmWWx4hkHIlwwHucAEmCOGHlq5EOhZE7gqa+E5yPd0uXpAvmxGazRLRjR67KgP0= kac@kac"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9pxu3Ept35UiToU/RPbuapomrdFz/QtPn4tXno2tiFRUh/Jc2xdE0Zubsg9m0VniYTSMjTl5gnVyoPBIL6cfQedobyqBDC32RXU4/5ZydsIJzQmiNd9lC3S459KK9YWH1/dc2bODfDIoOu6MD7dYdyQsvNp067AUdJ7qVZS94BpOsEdXTcwf1UqdztVWL9fOi+xpmwKz4l3Ms1fz2sGJVdE/OvDxg/dk9r2QhXOBVFLCyhx3RxP3L/xSKIES62+e9JlUu0V3G181fq+k9JqlQU1fiVERUgKPARuyLXDK9piwAc71CXJgVYDjxVWJLPIUASv2MllG2jU99cOByB8d2kLFY/FvZX8cZb6CD074Uw0Iy0qe1ztbkzIQLpTDLOzul9PsZf37ve+R1Pij/sHvq4uiwkLA38JvsBtIw0ckPTS8w+O5f2fbH/YK86iTlOILpgIjw+NdEACKmq0SHvy178P8NbhhT+Gs49vEbabbR7WBBgVE7EpD41ZwoWOBmLak= hafizov@MacBook-Pro-hafizov.local"
 
 - name: Disable Root Login in sshd_config
   lineinfile:
