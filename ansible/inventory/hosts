@@ -1,13 +1,13 @@
-[test_group]
-vm-00 ansible_host=192.168.1.100
-vm-01 ansible_host=192.168.1.110
-vm-02 ansible_host=192.168.1.111 
-vm-03 ansible_host=192.168.1.112
+[ubuntu]
+ubuntu-01 ansible_host=192.168.1.111
+ubuntu-02 ansible_host=192.168.1.112
+ubuntu-03 ansible_host=192.168.1.113 
+#vm-03 ansible_host=192.168.1.112
 ####  vm-04 ansible_host=192.168.1.113
 
-[balancers]
-vm-01 ansible_host=192.168.1.110
+#[balancers]
+#vm-01 ansible_host=192.168.1.110
 
-[hw-servers]
+#[hw-servers]
 #server-01 
-server-02 ansible_host=192.168.1.101
+#server-02 ansible_host=192.168.1.101
