@@ -1,11 +1,5 @@
 ---
 
-#- name: Setup root password
-#  user:
-#    name: root
-#    state: present
-#    password: "!"
-
 - name: Add hafizov user group
   group:
     name: hafizov
@@ -42,3 +36,10 @@
     owner: root
     group: root
     mode: 0440
+
+- name: Setup root password
+  user:
+    name: root
+    state: present
+    password: "!"
+
