@@ -1,7 +1,10 @@
 [ubuntu]
-ubuntu-01 ansible_host=192.168.1.111
-ubuntu-02 ansible_host=192.168.1.112
-ubuntu-03 ansible_host=192.168.1.113 
+ubuntu-01 ansible_host=192.168.1.200
+ubuntu-02 ansible_host=192.168.1.201
+ubuntu-03 ansible_host=192.168.1.202
+
+
+
 #vm-03 ansible_host=192.168.1.112
 ####  vm-04 ansible_host=192.168.1.113
 
