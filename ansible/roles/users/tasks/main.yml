@@ -5,4 +5,4 @@
     name:           "{{ item.name }}" 
     state:          absent
     remove:         yes
-  loop: "{{ users }}"
+  with_items: "{{ mather }}"
