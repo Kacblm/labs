@@ -3,7 +3,12 @@
 - name: Configure webserver with nginx
   hosts: webservers
   become: true
-  
+  vars:
+    tls_dir: /etc/nginx/ssl/
+    key_file: nginx.key
+    cert_file: nginx.crt
+    conf_file: /etc/nginx/sites-available/default
+
   tasks:
     - name: Update package cache
       package:
@@ -27,4 +32,7 @@
         src: ../templates/index.html.j2
         dest: /usr/share/nginx/html/index.html
 
-
+    - name: Copy tls files
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: "{{ tls_dir }}"
