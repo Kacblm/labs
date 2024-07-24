@@ -1,18 +1,31 @@
+---
 
+- name: Configure webserver with nginx
+  hosts: webservers
+  become: true
+  
+  tasks:
+    - name: Update package cache
+      package:
+        name: nginx
+        state: latest
+        update_cache: true
 
-# Nginx setup.
-- name: Copy nginx configuration in place.
-  template:
-    src: "{{ nginx_conf_template }}"
-    dest: "{{ nginx_conf_file_path }}"
-    owner: root
-    group: "{{ root_group }}"
-    mode: 0644
-  notify:
-    - reload nginx
+    - name: Copy nginx files
+      ansible.builtin.copy:
+        src: ./files/nginx.conf
+        dest: /etc/nginx/sites-available/default
+#      notify:
+#        - reload nginx
 
-- name: Ensure nginx service is running as configured.
-  service:
-    name: nginx
-    state: "{{ nginx_service_state }}"
-    enabled: "{{ nginx_service_enabled }}"
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        src: /etc/nginx/sites-available/default
+        dest: /etc/nginx/sites-enabled/default
+
+    - name: Create index config
+      ansible.builtin.template:
+        src: index.html.j2
+        dest: /usr/share/nginx/html/index.html
+#      notify:
+#        - reload nginx
