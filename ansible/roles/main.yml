@@ -1,0 +1,6 @@
+---
+- hosts: ubuntu-01
+  tasks:
+    - name: echo a variable
+      debug:
+        msg: "{{ nginx_conf_template }}"

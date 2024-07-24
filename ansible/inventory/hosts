@@ -5,14 +5,3 @@ ubuntu-03 ansible_host=172.16.29.130
 
 [webservers]
 ubuntu-01 ansible_host=172.16.29.128
-
-
-#vm-03 ansible_host=192.168.1.112
-####  vm-04 ansible_host=192.168.1.113
-
-#[balancers]
-#vm-01 ansible_host=192.168.1.110
-
-#[hw-servers]
-#server-01 
-#server-02 ansible_host=192.168.1.101
