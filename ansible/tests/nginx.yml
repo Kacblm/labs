@@ -1,0 +1,16 @@
+---
+
+- name: Install nginx
+  hosts: webservers
+  become: yes
+  strategy: free
+
+  tasks:
+    - name: example copying file with owner and permissions
+      copy:
+        src: nginx
+        dest: /home/hafizov/
+        owner: hafizov
+        group: hafizov
+        mode: 0644
+

@@ -15,4 +15,4 @@
       ansible.builtin.copy:
         src: nginx
         dest: /etc/nginx/sites-available/default
-        remote_src: yes
+

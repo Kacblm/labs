@@ -13,25 +13,18 @@
 
     - name: Copy nginx files
       ansible.builtin.copy:
-        src: ./files/nginx.conf
+        src: ../files/nginx.conf
         dest: /etc/nginx/sites-available/default
-        remote_src: yes
-
-#      notify:
-#        - reload nginx
 
     - name: Create a symbolic link
       ansible.builtin.file:
         src: /etc/nginx/sites-available/default
         dest: /etc/nginx/sites-enabled/default
-        remote_src: yes
+        state: link
 
     - name: Create index config
       ansible.builtin.template:
-        src: index.html.j2
+        src: ../templates/index.html.j2
         dest: /usr/share/nginx/html/index.html
-        remote_src: yes
-#      notify:
-#        - reload nginx
 
 
