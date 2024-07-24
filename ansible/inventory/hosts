@@ -1,0 +1,7 @@
+[ubuntu]
+ubuntu-01 ansible_host=172.16.29.128
+ubuntu-02 ansible_host=172.16.29.129
+ubuntu-03 ansible_host=172.16.29.130
+
+[webservers]
+ubuntu-01 ansible_host=172.16.29.128
