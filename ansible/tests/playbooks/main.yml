@@ -47,18 +47,14 @@
         mode: '0600'
       notify: Restart nginx
 
-    - name: Create a symbolic link
-      ansible.builtin.file:
-        src: /etc/nginx/sites-available/default
-        dest: /etc/nginx/sites-enabled/default
-        state: link
-
     - name: Create index config
       ansible.builtin.template:
         src: ../templates/index.html.j2
         dest: /usr/share/nginx/html/index.html
 
-    - name: Copy tls files
-      ansible.builtin.copy:
-        src: "{{ item }}"
-        dest: "{{ tls_dir }}"
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        src: /etc/nginx/sites-available/default
+        dest: /etc/nginx/sites-enabled/default
+        state: link
+      notify: Restart nginx

@@ -9,6 +9,7 @@ index index.html;
 server_tokens off;
 add_header X-Frame-Options DENY;
 add_header X-Content-Type-Options nosniff;
+sendfile on;
 
 server_name {{ inventory_hostname }};
 ssl_certificate {{ tls_dir }}{{ cert_file }};
