@@ -1,0 +1,18 @@
+---
+
+- name: Configure webserver with nginx
+  hosts: webservers
+  become: true
+  
+  tasks:
+    - name: Update package cache
+      package:
+        name: nginx
+        state: latest
+        update_cache: true
+
+    - name: Copy nginx files
+      ansible.builtin.copy:
+        src: nginx
+        dest: /etc/nginx/sites-available/default
+        remote_src: yes
