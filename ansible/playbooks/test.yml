@@ -1,0 +1,9 @@
+
+- name: Check vars
+  hosts: ubuntu-01
+  become: true
+
+  tasks:
+    - name: Display vars
+      debug:
+        msg: "display {{ nginx_package_name }}"
