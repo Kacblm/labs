@@ -5,3 +5,6 @@ ubuntu-03 ansible_host=172.16.29.130
 
 [webservers]
 ubuntu-01 ansible_host=172.16.29.128
+
+[postgresql]
+ubuntu-01 ansible_host=172.16.29.128
