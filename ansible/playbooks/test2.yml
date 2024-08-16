@@ -9,5 +9,5 @@
       register: login
       
     - ansible.builtin.debug: var=login
-    - ansible.builtin.debug: msg="{{ login.stdout }}"
+    - ansible.builtin.debug: msg="Login is user {{ login.stdout }}"
 
