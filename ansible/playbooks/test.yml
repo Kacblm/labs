@@ -1,9 +1,9 @@
 
 - name: Check vars
-  hosts: ubuntu-01
+  hosts: webservers
   become: true
 
   tasks:
     - name: Display vars
       debug:
-        msg: "display {{ nginx_package_name }}"
+        msg: "display {{ nginx_keepalive_timeout }}"

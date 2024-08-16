@@ -1,0 +1,12 @@
+
+- name: Check vars
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Show id result
+      command: id -un
+      register: login
+      
+    - ansible.builtin.debug: var=login
+    - ansible.builtin.debug: msg="{{ login.stdout }}"
