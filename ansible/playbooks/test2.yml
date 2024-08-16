@@ -10,3 +10,4 @@
       
     - ansible.builtin.debug: var=login
     - ansible.builtin.debug: msg="{{ login.stdout }}"
+
