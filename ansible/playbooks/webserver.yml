@@ -7,4 +7,5 @@
   strategy: free
 
   roles:
-    - { role: /Users/hafizov/lab/ansible/roles/nginx }
+  - nginx
+
