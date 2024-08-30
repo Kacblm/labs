@@ -7,5 +7,6 @@
   strategy: free
 
   roles:
-  - nginx
+  - roles/nginx
+
 
