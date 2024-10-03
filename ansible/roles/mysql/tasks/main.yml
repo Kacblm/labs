@@ -17,11 +17,6 @@
         dest: "/usr/share/nginx/html/index.html"
         mode: '0600'
 
-    - name: Copy site file
-      ansible.builtin.copy:
-        src: "files/site.conf"
-        dest: "/etc/nginx/sites-available/default"
-        mode: '0600'        
 
     - name: Create a symbolic link
       ansible.builtin.file:

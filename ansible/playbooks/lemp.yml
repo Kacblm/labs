@@ -1,13 +1,15 @@
 
 ---
 
-- name: Install nginx
-  hosts: all
+- name: Install LEMP stack
+  hosts: webservers
   become: yes
   strategy: free
 
   roles:
   - roles/nginx
+  - roles/mysql
+  - roles/php
 
   tasks:
   - name: "Restart nginx"
