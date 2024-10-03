@@ -1,0 +1,32 @@
+
+    - name: Install php
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: latest
+        update_cache: true
+      with_items:
+        - "php-fpm"
+        - "php-mysql"
+    
+    - name: Copy php files
+      ansible.builtin.copy:
+        src: "files/test-php/php_test"
+        dest: "/var/www"
+        mode: '0644'
+
+    - name: Copy nginx files
+      ansible.builtin.copy:
+        src: "files/test-php/nginx.conf"
+        dest: "/etc/nginx/sites-available/php_test.conf"
+        mode: '0644'
+
+    - name: Link nginx files
+      ansible.builtin.file:
+        src: "/etc/nginx/sites-available/php_test.conf"
+        dest: "/etc/nginx/sites-enabled/php_test.conf"
+        state: link
+
+    - name: Reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded

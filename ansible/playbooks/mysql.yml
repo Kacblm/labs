@@ -1,8 +1,8 @@
 
 ---
 
-- name: Install nginx
-  hosts: webservers
+- name: Install mysql
+  hosts: all
   become: yes
   strategy: free
 
