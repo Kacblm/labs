@@ -26,7 +26,3 @@
         dest: "/etc/nginx/sites-enabled/php_test.conf"
         state: link
 
-    - name: Reload nginx
-      ansible.builtin.service:
-        name: nginx
-        state: reloaded
