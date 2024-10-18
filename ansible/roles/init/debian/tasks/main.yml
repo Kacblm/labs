@@ -21,26 +21,26 @@
 #    exclusive: no
     key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9pxu3Ept35UiToU/RPbuapomrdFz/QtPn4tXno2tiFRUh/Jc2xdE0Zubsg9m0VniYTSMjTl5gnVyoPBIL6cfQedobyqBDC32RXU4/5ZydsIJzQmiNd9lC3S459KK9YWH1/dc2bODfDIoOu6MD7dYdyQsvNp067AUdJ7qVZS94BpOsEdXTcwf1UqdztVWL9fOi+xpmwKz4l3Ms1fz2sGJVdE/OvDxg/dk9r2QhXOBVFLCyhx3RxP3L/xSKIES62+e9JlUu0V3G181fq+k9JqlQU1fiVERUgKPARuyLXDK9piwAc71CXJgVYDjxVWJLPIUASv2MllG2jU99cOByB8d2kLFY/FvZX8cZb6CD074Uw0Iy0qe1ztbkzIQLpTDLOzul9PsZf37ve+R1Pij/sHvq4uiwkLA38JvsBtIw0ckPTS8w+O5f2fbH/YK86iTlOILpgIjw+NdEACKmq0SHvy178P8NbhhT+Gs49vEbabbR7WBBgVE7EpD41ZwoWOBmLak= hafizov@MacBook-Pro-hafizov.local"
 
-- name: Add sabir user group
-  group:
-    name: sabir
-    state: present
+# - name: Add sabir user group
+#   group:
+#     name: sabir
+#     state: present
 
-- name: Add sabir user
-  user:
-    name: sabir
-    state: present
-    comment: "sabir"
-    group: sabir
-    password: !
-    shell: /bin/bash
+# - name: Add sabir user
+#   user:
+#     name: sabir
+#     state: present
+#     comment: "sabir"
+#     group: sabir
+#     password: !
+#     shell: /bin/bash
 
-- name: Add sabir key
-  ansible.posix.authorized_key:
-    user: sabir
-    state: present
-#    exclusive: no
-    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9pxu3Ept35UiToU/RPbuapomrdFz/QtPn4tXno2tiFRUh/Jc2xdE0Zubsg9m0VniYTSMjTl5gnVyoPBIL6cfQedobyqBDC32RXU4/5ZydsIJzQmiNd9lC3S459KK9YWH1/dc2bODfDIoOu6MD7dYdyQsvNp067AUdJ7qVZS94BpOsEdXTcwf1UqdztVWL9fOi+xpmwKz4l3Ms1fz2sGJVdE/OvDxg/dk9r2QhXOBVFLCyhx3RxP3L/xSKIES62+e9JlUu0V3G181fq+k9JqlQU1fiVERUgKPARuyLXDK9piwAc71CXJgVYDjxVWJLPIUASv2MllG2jU99cOByB8d2kLFY/FvZX8cZb6CD074Uw0Iy0qe1ztbkzIQLpTDLOzul9PsZf37ve+R1Pij/sHvq4uiwkLA38JvsBtIw0ckPTS8w+O5f2fbH/YK86iTlOILpgIjw+NdEACKmq0SHvy178P8NbhhT+Gs49vEbabbR7WBBgVE7EpD41ZwoWOBmLak= hafizov@MacBook-Pro-hafizov.local"
+# - name: Add sabir key
+#   ansible.posix.authorized_key:
+#     user: sabir
+#     state: present
+# #    exclusive: no
+#     key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9pxu3Ept35UiToU/RPbuapomrdFz/QtPn4tXno2tiFRUh/Jc2xdE0Zubsg9m0VniYTSMjTl5gnVyoPBIL6cfQedobyqBDC32RXU4/5ZydsIJzQmiNd9lC3S459KK9YWH1/dc2bODfDIoOu6MD7dYdyQsvNp067AUdJ7qVZS94BpOsEdXTcwf1UqdztVWL9fOi+xpmwKz4l3Ms1fz2sGJVdE/OvDxg/dk9r2QhXOBVFLCyhx3RxP3L/xSKIES62+e9JlUu0V3G181fq+k9JqlQU1fiVERUgKPARuyLXDK9piwAc71CXJgVYDjxVWJLPIUASv2MllG2jU99cOByB8d2kLFY/FvZX8cZb6CD074Uw0Iy0qe1ztbkzIQLpTDLOzul9PsZf37ve+R1Pij/sHvq4uiwkLA38JvsBtIw0ckPTS8w+O5f2fbH/YK86iTlOILpgIjw+NdEACKmq0SHvy178P8NbhhT+Gs49vEbabbR7WBBgVE7EpD41ZwoWOBmLak= hafizov@MacBook-Pro-hafizov.local"
 
 
 - name: Disable Root Login in sshd_config
