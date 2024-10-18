@@ -1,0 +1,25 @@
+version: "3"
+services: 
+  api:
+    image: demo4
+    container_name: my-name #только для обычного докера, swarm нет
+    ports:
+      - 3000:3000
+    networks:
+      - myTestNetwork
+    volumes:
+      - data:/opt/app/data
+
+networks:
+  myTestNetwork:
+    driver: bridge
+
+#OR if exist network
+#networks:
+#  default:
+#    external: true
+#    name: myTestNetwork
+
+
+volumers:
+  data:
