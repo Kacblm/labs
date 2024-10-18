@@ -1,60 +1,60 @@
 ---
-- name: "Add users: Admins"
+# - name: "Add users: Admins"
+#   user:
+#     name:           "{{ item.user }}"
+#     state:          present
+#     comment:        "{{ item.comment }}"
+# #    group: "{{ item.user }}"
+#     groups:         adm,sudo
+#     password:       "{{ item.password }}"
+#     shell:          /bin/bash
+#   loop:             "{{ ssh_admins }}"
+
+
+- name: Add hafizov user group
+  group:
+    name: hafizov
+    state: present
+
+- name: Add hafizov user
   user:
-    name:           "{{ item.user }}"
-    state:          present
-    comment:        "{{ item.comment }}"
-#    group: "{{ item.user }}"
-    groups:         adm,sudo
-    password:       "{{ item.password }}"
-    shell:          /bin/bash
-  loop:             "{{ ssh_admins }}"
+    name: hafizov
+    state: present
+    comment: "hafizov"
+    group: hafizov
+    password: !
+    shell: /bin/bash
 
+- name: Add hafizov key
+  ansible.posix.authorized_key:
+    user: hafizov
+    state: present
+#    exclusive: no
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9pxu3Ept35UiToU/RPbuapomrdFz/QtPn4tXno2tiFRUh/Jc2xdE0Zubsg9m0VniYTSMjTl5gnVyoPBIL6cfQedobyqBDC32RXU4/5ZydsIJzQmiNd9lC3S459KK9YWH1/dc2bODfDIoOu6MD7dYdyQsvNp067AUdJ7qVZS94BpOsEdXTcwf1UqdztVWL9fOi+xpmwKz4l3Ms1fz2sGJVdE/OvDxg/dk9r2QhXOBVFLCyhx3RxP3L/xSKIES62+e9JlUu0V3G181fq+k9JqlQU1fiVERUgKPARuyLXDK9piwAc71CXJgVYDjxVWJLPIUASv2MllG2jU99cOByB8d2kLFY/FvZX8cZb6CD074Uw0Iy0qe1ztbkzIQLpTDLOzul9PsZf37ve+R1Pij/sHvq4uiwkLA38JvsBtIw0ckPTS8w+O5f2fbH/YK86iTlOILpgIjw+NdEACKmq0SHvy178P8NbhhT+Gs49vEbabbR7WBBgVE7EpD41ZwoWOBmLak= hafizov@MacBook-Pro-hafizov.local"
 
-# - name: Add hafizov user group
-#   group:
-#     name: hafizov
-#     state: present
+- name: Disable Root Login in sshd_config
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: 'PermitRootLogin No'
+  notify:
+    - restart ssh
 
-# - name: Add hafizov user
-#   user:
-#     name: hafizov
-#     state: present
-#     comment: "hafizov"
-#     group: hafizov
-#     password: !
-#     shell: /bin/bash
+- name: Create sudo configuration
+  template:
+    src: sudoers_debian.j2
+    dest: /etc/sudoers
+    owner: root
+    group: root
+    mode: 0440
 
-# - name: Add ansible key
-#   ansible.posix.authorized_key:
-#     user: hafizov
-#     state: present
-# #    exclusive: no
-#     key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9pxu3Ept35UiToU/RPbuapomrdFz/QtPn4tXno2tiFRUh/Jc2xdE0Zubsg9m0VniYTSMjTl5gnVyoPBIL6cfQedobyqBDC32RXU4/5ZydsIJzQmiNd9lC3S459KK9YWH1/dc2bODfDIoOu6MD7dYdyQsvNp067AUdJ7qVZS94BpOsEdXTcwf1UqdztVWL9fOi+xpmwKz4l3Ms1fz2sGJVdE/OvDxg/dk9r2QhXOBVFLCyhx3RxP3L/xSKIES62+e9JlUu0V3G181fq+k9JqlQU1fiVERUgKPARuyLXDK9piwAc71CXJgVYDjxVWJLPIUASv2MllG2jU99cOByB8d2kLFY/FvZX8cZb6CD074Uw0Iy0qe1ztbkzIQLpTDLOzul9PsZf37ve+R1Pij/sHvq4uiwkLA38JvsBtIw0ckPTS8w+O5f2fbH/YK86iTlOILpgIjw+NdEACKmq0SHvy178P8NbhhT+Gs49vEbabbR7WBBgVE7EpD41ZwoWOBmLak= hafizov@MacBook-Pro-hafizov.local"
+- name: Setup root password
+  user:
+    name: root
+    state: present
+    password: "!"
 
-# - name: Disable Root Login in sshd_config
-#   lineinfile:
-#     dest: /etc/ssh/sshd_config
-#     regexp: '^PermitRootLogin'
-#     line: 'PermitRootLogin No'
-#   notify:
-#     - restart ssh
-
-# - name: Create sudo configuration
-#   template:
-#     src: sudoers_debian.j2
-#     dest: /etc/sudoers
-#     owner: root
-#     group: root
-#     mode: 0440
-
-# - name: Setup root password
-#   user:
-#     name: root
-#     state: present
-#     password: "!"
-
-# - name: Ensure hostname set
-#   hostname:
-#     name:           "{{ inventory_hostname }}"
+- name: Ensure hostname set
+  hostname:
+    name:           "{{ inventory_hostname }}"
 
