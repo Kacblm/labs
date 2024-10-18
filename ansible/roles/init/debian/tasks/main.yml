@@ -19,7 +19,7 @@
     user: hafizov
     state: present
 #    exclusive: no
-    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9pxu3Ept35UiToU/RPbuapomrdFz/QtPn4tXno2tiFRUh/Jc2xdE0Zubsg9m0VniYTSMjTl5gnVyoPBIL6cfQedobyqBDC32RXU4/5ZydsIJzQmiNd9lC3S459KK9YWH1/dc2bODfDIoOu6MD7dYdyQsvNp067AUdJ7qVZS94BpOsEdXTcwf1UqdztVWL9fOi+xpmwKz4l3Ms1fz2sGJVdE/OvDxg/dk9r2QhXOBVFLCyhx3RxP3L/xSKIES62+e9JlUu0V3G181fq+k9JqlQU1fiVERUgKPARuyLXDK9piwAc71CXJgVYDjxVWJLPIUASv2MllG2jU99cOByB8d2kLFY/FvZX8cZb6CD074Uw0Iy0qe1ztbkzIQLpTDLOzul9PsZf37ve+R1Pij/sHvq4uiwkLA38JvsBtIw0ckPTS8w+O5f2fbH/YK86iTlOILpgIjw+NdEACKmq0SHvy178P8NbhhT+Gs49vEbabbR7WBBgVE7EpD41ZwoWOBmLak= hafizov@MacBook-Pro-hafizov.local"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9pxu3Ept35UiToU/RPbuapomrdFz/QtPn4tXno2tiFRUh/Jc2xdE0Zubsg9m0VniYTSMjTl5gnVyoPBIL6cfQedobyqBDC32RXU4/5ZydsIJzQmiNd9lC3S459KK9YWH1/dc2bODfDIoOu6MD7dYdyQsvNp067AUdJ7qVZS94BpOsEdXTcwf1UqdztVWL9fOi+xpmwKz4l3Ms1fz2sGJVdE/OvDxg/dk9r2QhXOBVFLCyhx3RxP3L/xSKIES62+e9JlUu0V3G181fq+k9JqlQU1fiVERUgKPARuyLXDK9piwAc71CXJgVYDjxVWJLPIUASv2MllG2jU99cOByB8d2kLFY/FvZX8cZb6CD074Uw0Iy0qe1ztbkzIQLpTDLOzul9PsZf37ve+R1Pij/sHvq4uiwkLA38JvsBtIw0ckPTS8w+O5f2fbH/YK86iTlOILpgIjw+NdEACKmq0SHvy178P8NbhhT+Gs49vEbabbR7WBBgVE7EpD41ZwoWOBmLak= hafizov@Macbatony4-Pro-hafizov.local"
 
 - name: Add book user group
   group:
@@ -42,6 +42,47 @@
 #    exclusive: no
     key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCuL9klQqhO+muXoCUMfuWV+fHeZb3OFbtmT1evuhu5lgCLZt1reIDA8mzQ8tIVHUQufSFyF/D0PLO2TyzBvLwW1Ars/RpNTTxt+KnwMUGy53+XWUiqUYL6Da8GHzV4BLtKzJYH3hufImvHUY1lSMQj1UpMhRQw7UDwWYXAz7qRD4wbmtAUs5p1LZ26b3xndFdAtG/mXO2aMDsyWOptIijL1yetlCAMm3Xqce3e6R0p5DN0YPF8ydfvwh4hcQ399eWridqeTuuDBTAz764PDRLSNDCWLEwbQlRSCOIxScwm1a6lOze63RL56vFaVFqrsLvpWv23Wp/TvMHgYIg3gD1B2ws53Pg6IrkBhFyyfcXWEV6gRwIxuCZdSnALidiWMdl9JGIYnL5hQBTbtQz4P45maDDQxrnGA8oOZqfXfz4eEz7BZxC9cVKNxzny9E644bdDJhggq/k7BOPiTbxAss30KmBiZ4UFaTcI07tofED4hcR0ziAWr7sfJaxcCbo2oZHvDfz8cUhoKoLHDOL8TQUKbR0WP4CqXJ4RNZka5kmBfQkYcu6JE+lZfSmroJCJqMRg1ucAwgT7/l2bilbhPj9RbsknfKBcvRYpg00JkxIt7je0fF5gc8URmyGL5oB5LXNlViSJjqE/cDRuCxK3WcmMq5herROcY5YIiolohwmZIw== egor.lenivin@gmail.com"
 
+- name: Add batony4 user group
+  group:
+    name: batony4
+    state: present
+
+- name: Add batony4 user
+  user:
+    name: batony4
+    state: present
+    comment: "batony4"
+    group: batony4
+    password: !
+    shell: /bin/bash
+
+- name: Add batony4 key
+  ansible.posix.authorized_key:
+    user: batony4
+    state: present
+#    exclusive: no
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDwmwgRvrRuqUsMiernusDrD3U0JVTFW9gmA3vCTlq9im2uYUp5SR3IoI5xDG+FOuKu9CJy5Z7W/9FwZ4LLLWIrYjXOGnD6CGxam+ZJGVB/+B8TkOHecCKSxCeNF9PkxgoT7RPQjMpDLFRO/xzHEIQRLgmIQjkumUqBcOOX+335X0JnGGqulV74mQ3nVxBvcvDObbm76qzRiJ4RMMV8M4Gu/UOoTUEn2FFTJPmXjrueGQp/Fr5UAyNSkrhxL5g3KLsq2OLXgkRaMqmdjlvfCqe7cAVm4W9+2AKV2TuAD0UDWIApH6tXmsfBLQLT6pUUTvW9Mb8G/Mxj5Q65Ushez2NB batony4@MacBook-Pro-Anton.local"
+
+- name: Add sabir user group
+  group:
+    name: sabir
+    state: present
+
+- name: Add sabir user
+  user:
+    name: sabir
+    state: present
+    comment: "sabir"
+    group: sabir
+    password: !
+    shell: /bin/bash
+
+- name: Add sabir key
+  ansible.posix.authorized_key:
+    user: sabir
+    state: present
+#    exclusive: no
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXdWiykQP1CplFlGfZZPQRx8/J9eGJqREcfBGVndhoynpJ7giyVGgnST7lSYnpbZXzZee2Lg68ZxcnNPgMvZXy9uhpQUvpVK6BD7ThRZvMQtk4NK9W0KZ86z5XGPBrp+X5V+oymel5X5pEI9Mqe0YpnNcTRBhR/RXe2QUdW9XxnHEDfilmpaBzPgzJlBi7IzD45J90ZWzeN4DkUQR75yAhmMT2lNuGggCNkp3c2lsX2PXVnec5jwfdho3FT3HrzgBIkkvkVK699xLinhA5Trvv42ywcwsoYT9UaO5nFVKLwlI94KQAodBtCN3yw5AMBBtpMEx25mj6K8/18ls4pSe5 sabir@Sabirs-MacBook-Pro.local"
 
 - name: Disable Root Login in sshd_config
   lineinfile:
