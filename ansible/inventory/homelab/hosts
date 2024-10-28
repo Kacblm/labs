@@ -2,7 +2,7 @@
 ubuntu-01 ansible_host=172.16.29.128
 ubuntu-02 ansible_host=172.16.29.129
 ubuntu-03 ansible_host=172.16.29.130
-server-1 ansible_host=192.168.1.12
+server ansible_host=192.168.1.12
 
 [ero]
 server-01 ansible_host=172.240.92.124

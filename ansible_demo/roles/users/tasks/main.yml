@@ -1,0 +1,8 @@
+---
+
+- name: Remove preinstalled and dismissed users
+  ansible.builtin.user:
+    name:           "{{ item.name }}" 
+    state:          absent
+    remove:         yes
+  with_items: "{{ mather }}"

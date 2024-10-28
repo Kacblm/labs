@@ -1,0 +1,49 @@
+- name: Install default packages
+  apt:
+    name:           "{{ packages }}"
+    update_cache:   yes
+    force:          yes
+  vars:
+    packages:
+      - smartmontools
+      - atop
+      - mc
+      - htop
+      - iotop
+      - screen
+      - curl
+      - rsync
+      - iftop
+      - netcat
+      - telnet
+      - lshw
+      - mtr-tiny
+      - tcpdump
+      - ca-certificates
+      - lsof
+      - parted
+      - fio
+      - language-pack-ru-base
+      - sysfsutils
+      - numactl
+      - vim
+      - apt-transport-https
+      - gdisk
+      - pigz
+      - pbzip2
+      - bash
+      - bash-completion
+      - openssl
+      - openssh-client
+      - openssh-server
+      - sudo
+      - unzip
+      - software-properties-common
+      - gawk
+      - net-tools
+      - ca-certificates
+      - gpg-agent
+      - nmon
+      - lm-sensors
+  notify:
+    - update locales

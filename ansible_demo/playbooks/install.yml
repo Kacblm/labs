@@ -1,0 +1,27 @@
+---
+
+- name: Some tasks
+  hosts: all
+  tasks:
+    - name: preconfig
+      block:
+      - name: create user
+        user:
+          name: "{{ user }}"
+          state: present
+        register: error
+        ignore_errors: yes
+      - name: install curl
+        ansible.builtin.apt:
+          name: curl
+          update_cache: yes
+        register: error    
+      become: true
+      rescue:
+        - name: catch error
+          ansible.builtin.debug:
+            var: error
+      always:
+        - name: reboot
+          ansible.builtin.debug:
+            msg: "reboting"

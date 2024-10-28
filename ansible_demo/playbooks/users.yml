@@ -8,4 +8,6 @@
         name: "{{ user }}"
         state: present
       become: true
-       
+      register: out
+    - ansible.builtin.debug:
+        var: out
