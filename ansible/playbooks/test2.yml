@@ -1,13 +1,14 @@
 
-- name: Check vars
-  hosts: webservers
+- name: Testing debug
+  hosts: ubuntu-01
   become: true
 
   tasks:
     - name: Show id result
-      command: id -un
-      register: login
+      command: ip -a
+            #command: id -un
+      register: ip
       
-    - ansible.builtin.debug: var=login
-    - ansible.builtin.debug: msg="Login is user {{ login.stdout }}"
+#    - ansible.builtin.debug: var=login
+#    - ansible.builtin.debug: msg="Login is user {{ login.stdout }}"
 
